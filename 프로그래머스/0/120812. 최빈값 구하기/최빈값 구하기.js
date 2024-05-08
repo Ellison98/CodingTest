@@ -1,34 +1,25 @@
 function solution(array) {
-    if (array.length === 0) return -1; // 빈 배열인 경우 -1 반환
-
-    let frequency = new Map(); // 값의 빈도수를 저장할 Map 객체 생성
-
-    // 각 요소의 빈도수 계산
-    array.forEach(num => {
-        if (frequency.has(num)) {
-            frequency.set(num, frequency.get(num) + 1);
-        } else {
-            frequency.set(num, 1);
-        }
-    });
-
-    let maxFrequency = 0; // 최대 빈도수 초기화
-    let mode = []; // 최빈값 저장할 배열 초기화
-
-    // 최대 빈도수와 해당 값들 찾기
-    frequency.forEach((count, num) => {
-        if (count > maxFrequency) {
-            maxFrequency = count;
-            mode = [num]; // 새 최빈값으로 초기화
-        } else if (count === maxFrequency) {
-            mode.push(num); // 최대 빈도수가 같은 값 추가
-        }
-    });
-
-    // 최빈값이 하나인지 여러 개인지에 따라 반환 값 결정
-    if (mode.length === 1) {
-        return mode[0]; // 최빈값이 하나일 때
-    } else {
-        return -1; // 최빈값이 여러 개일 때
+    // Map 객체를 생성하여 각 요소의 빈도수를 저장합니다.
+    let m = new Map();
+    // array 배열의 각 요소 n에 대해 반복 실행합니다.
+    for (let n of array) {
+        // m.get(n)은 요소 n의 현재 빈도수를 가져옵니다.
+        // m.get(n) || 0은 n이 Map에 없을 경우 0을 반환하고, 있을 경우 해당 빈도수를 반환합니다.
+        // 그 후 1을 더해 다시 m에 설정하여 n의 빈도수를 업데이트합니다.
+        m.set(n, (m.get(n) || 0) + 1);
     }
+    
+    // Map 객체 m을 배열로 변환하고, 빈도수에 따라 내림차순으로 정렬합니다.
+    // 내림차순 정렬을 위해 b[1] - a[1]을 사용합니다.
+    // 여기서 a와 b는 배열의 요소로, 각 요소는 [key, value] 형태의 배열입니다.
+    // key는 원소의 값, value는 해당 원소의 빈도수입니다.
+    m = [...m].sort((a, b) => b[1] - a[1]);
+    
+    // 최빈값을 판단하여 반환합니다.
+    // m.length === 1 조건은 배열에 요소가 하나밖에 없을 경우를 체크합니다.
+    // m[0][1] > m[1][1] 조건은 최빈값이 하나인지 여러 개인지를 확인합니다.
+    // m[0][1]은 가장 높은 빈도수, m[1][1]은 두 번째로 높은 빈도수입니다.
+    // 최빈값이 하나만 있으면 해당 최빈값 m[0][0]을 반환하고, 
+    // 그렇지 않으면 -1을 반환합니다.
+    return m.length === 1 || m[0][1] > m[1][1] ? m[0][0] : -1;
 }
