@@ -1,10 +1,1 @@
-function solution(num_list) {
-    
-    // 1. 배열의 길이를 측정
-    if (num_list.length > 10) {
-        return num_list.reduce((a, c) => a + c);
-    }
-    else {
-        return num_list.reduce((a, c) => a * c);
-    }
-}
+const solution = num_list => num_list.reduce((a , c) => num_list.length > 10 ? a + c : a * c);
