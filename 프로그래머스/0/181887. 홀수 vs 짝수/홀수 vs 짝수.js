@@ -11,27 +11,7 @@ function solution(num_list) {
         return -1;
     }
     
-    num_list.forEach((item, index) => {
-        if (index === 0) {
-            even += item;
-        }
-        else if (index % 2 !== 0) {
-            odd += item;
-        }
-        else {
-            even += item;
-        }
-    })
+    num_list.forEach((item, index) => index % 2 === 0 ? even+=item : odd+=item);
     
-    let result = 0;
-    
-    if (even === odd) {
-        return even;
-    }
-    else if (even > odd) {
-        return even;
-    }
-    else if (even < odd) {
-        return odd;
-    }
+    return Math.max(even, odd);
 }
