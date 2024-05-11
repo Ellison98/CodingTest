@@ -1,16 +1,5 @@
 function solution(numbers) {
-    let maxNum = Number.MIN_SAFE_INTEGER;
-    
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = 0; j < numbers.length; j++) {
-            if (i !== j) {
-                let addNum = numbers[i] * numbers[j];
-                if (maxNum < addNum) {
-                    maxNum = addNum;
-                }
-            }
-        }
-    }
-    
-    return maxNum;
+    let lenArr = numbers.length;
+    numbers.sort((a, b) => a - b);
+    return Math.max(numbers[0] * numbers[1], numbers[lenArr-1] * numbers[lenArr-2]);
 }
