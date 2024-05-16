@@ -3,16 +3,5 @@ function solution(absolutes, signs) {
         return -1;
     }
     
-    let answer = 0;
-    
-    for (let i = 0; i < signs.length; i++) {
-        if (signs[i] === true) {
-            answer += absolutes[i];
-        }
-        else {
-            answer -= absolutes[i];
-        }
-    }
-    
-    return answer;
+    return absolutes.reduce((a, c, i) => a + (c * (signs[i] ? 1 : -1)), 0)
 }
