@@ -1,14 +1,3 @@
 function solution(n) {
-    var answer = '';
-    
-    for (let i = 0; i < n; i++) {
-        if (i === 0 || i % 2 === 0) {
-            answer += '수';
-        }
-        else if (i === 1 || i % 2 !== 0) {
-            answer += '박';
-        }
-    }
-    
-    return answer;
+    return '수박'.repeat(n).slice(0, n);
 }
