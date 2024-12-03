@@ -1,5 +1,5 @@
 function solution(num, total) {
-    const start_num = Math.ceil((2 * total / num - (num - 1)) / 2);
+    const start_num = Math.ceil((2 * total / num + 1 - num) / 2);
     let answer = [];
     
     for (let i = 0; i < num; i++) {
