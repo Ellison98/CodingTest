@@ -1,1 +1,1 @@
-# CodingTest_JavaScript
+# CodingTest_Python_JavaScript
