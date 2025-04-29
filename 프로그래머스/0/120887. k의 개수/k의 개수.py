@@ -4,4 +4,5 @@ def solution(i, j, k):
     
     for num in range(i, j + 1):
         answer += str(num).count(k)
+    
     return answer
